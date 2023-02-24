@@ -9,6 +9,22 @@ const initialState = [
   //   guests: "1",
   //   ticketClass: "Economy",
   // },
+  // {
+  //   id: 2,
+  //   from: "Dhaka",
+  //   to: "Cox's Bazar",
+  //   date: "2021-08-01",
+  //   guests: "1",
+  //   ticketClass: "Economy",
+  // },
+  // {
+  //   id: 3,
+  //   from: "Dhaka",
+  //   to: "Cox's Bazar",
+  //   date: "2021-08-01",
+  //   guests: "1",
+  //   ticketClass: "Economy",
+  // },
 ];
 
 const flightReducer = (state = initialState, action) => {

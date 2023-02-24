@@ -18,6 +18,9 @@ export default function Inputs() {
     guests: "",
     ticketClass: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
+
   // console.log(flights.length);
   const handleChange = (event) => {
     setFormValues({
@@ -39,6 +42,20 @@ export default function Inputs() {
     });
   };
 
+  const isButtonDisabled = flights.length === 3;
+  const handleButtonClick = (event) => {
+    // console.log("handleButtonClick");
+    if (isButtonDisabled) {
+      event.preventDefault();
+      // console.log("You cannot add more than 3 flights.");
+      setErrorMessage("You cannot add more than 3 flights.");
+    } else {
+      // console.log("You can add more flights.");
+      setErrorMessage("");
+      handleSubmit(event);
+    }
+  };
+
   useEffect(() => {
     // console.log("useEffect");
     // console.log(flights);
@@ -48,7 +65,10 @@ export default function Inputs() {
   return (
     <div className="mt-[160px] mx-4 md:mt-[160px] relative">
       <div className="bg-white rounded-md max-w-6xl w-full mx-auto">
-        <form className="first-hero lws-inputform" onSubmit={handleSubmit}>
+        <form
+          className="first-hero lws-inputform"
+          onSubmit={handleButtonClick}
+        >
           {/* <!-- From --> */}
           <div className="des-from">
             <p>Destination From</p>
@@ -162,7 +182,7 @@ export default function Inputs() {
             className="addCity"
             type="submit"
             id="lws-addCity"
-            disabled={flights.length === 3}
+            // disabled={isButtonDisabled}
           >
             <svg
               width="15px"
@@ -180,6 +200,13 @@ export default function Inputs() {
             </svg>
             <span className="text-sm">Book</span>
           </button>
+
+          {/* <!-- Error message --> */}
+          {errorMessage && (
+            <div style={{ color: "red" }} className="text-red-500 text-sm">
+              {errorMessage}
+            </div>
+          )}
         </form>
       </div>
     </div>
