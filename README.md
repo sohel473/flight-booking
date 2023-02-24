@@ -22,3 +22,5 @@
 - Redux
 - HTML
 - CSS
+
+Deployment Link: https://flight-booking-sohel47.netlify.app/
